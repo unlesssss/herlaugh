@@ -20,7 +20,7 @@
     }
 
     /* ------------------------------------------
-       MOBILE BLOCKER
+       MOBILE BLOCKER (real mobile detection)
     -------------------------------------------*/
     .mobile-warning {
       display: none;
@@ -45,7 +45,8 @@
       color: #FF0062;
     }
 
-    @media (max-width: 900px) {
+    /* REAL MOBILE DEVICE DETECTION */
+    @media only screen and (hover: none) and (pointer: coarse) {
       .mobile-warning {
         display: flex;
       }
@@ -59,6 +60,7 @@
     /* ------------------------------------------
        DESKTOP LAYOUT
     -------------------------------------------*/
+
     .wrapper {
       position: relative;
       width: 100%;
@@ -117,7 +119,7 @@
 
 <body>
 
-  <!-- AUDIO (starts muted) -->
+  <!-- AUDIO (starts muted & fades in after click) -->
   <audio id="bg-audio" src="Assets/Audio/herlaugh.wav" autoplay loop muted></audio>
 
   <!-- MOBILE BLOCKER -->
@@ -129,7 +131,9 @@
 
   <!-- DESKTOP CONTENT -->
   <div class="wrapper">
+
     <img src="Assets/IMG/herlaugh.jpg" class="main-image">
+
     <div class="left-panel">
       <p class="upload-text">
         Upload an image of your
@@ -137,14 +141,14 @@
         <br>+
       </p>
     </div>
+
   </div>
 
-  <!-- FULL-WIDTH PNG BAR -->
   <div class="bottom-bar">
     <img src="Assets/IMG/Bar.png" class="bottom-logo">
   </div>
 
-  <!-- AUDIO UNMUTE / FADE-IN -->
+  <!-- AUDIO UNMUTE / FADE-IN SCRIPT -->
   <script>
     const audio = document.getElementById('bg-audio');
 
