@@ -26,7 +26,7 @@
       overflow: hidden;
     }
 
-    /* CENTER THE MAIN IMAGE */
+    /* MAIN IMAGE BEHIND EVERYTHING */
     .main-image {
       position: absolute;
       top: 50%;
@@ -35,10 +35,10 @@
       width: auto;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      z-index: 1;
+      z-index: 1; /* behind the text + pink bar */
     }
 
-    /* TEXT CENTERED ON LEFT SIDE */
+    /* TEXT ABOVE IMAGE BUT BELOW BAR */
     .left-panel {
       position: relative;
       z-index: 2;
@@ -60,17 +60,18 @@
       color: #FF0062;
     }
 
-    /* FULL WIDTH BOTTOM PNG BAR */
+    /* FULL WIDTH PINK BAR PNG IN FRONT */
     .bottom-bar {
       width: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
+      z-index: 3; /* <-- now on top of the entire page */
     }
 
     .bottom-logo {
-      width: 100%;  /* stretch full width */
-      height: auto; /* keep correct ratio */
+      width: 100%;
+      height: auto;
       display: block;
     }
   </style>
@@ -93,7 +94,6 @@
 
   </div>
 
-  <!-- FULL-WIDTH BAR PNG -->
   <div class="bottom-bar">
     <img src="Assets/IMG/Bar.png" class="bottom-logo">
   </div>
