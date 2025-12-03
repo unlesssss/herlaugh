@@ -19,9 +19,7 @@
       overflow-x: hidden;
     }
 
-    /* ------------------------------------------
-       MOBILE BLOCKER (real mobile detection)
-    -------------------------------------------*/
+    /* MOBILE WARNING (hidden by default) */
     .mobile-warning {
       display: none;
       position: fixed;
@@ -45,22 +43,7 @@
       color: #FF0062;
     }
 
-    /* REAL MOBILE DEVICE DETECTION */
-    @media only screen and (hover: none) and (pointer: coarse) {
-      .mobile-warning {
-        display: flex;
-      }
-
-      .wrapper,
-      .bottom-bar {
-        display: none !important;
-      }
-    }
-
-    /* ------------------------------------------
-       DESKTOP LAYOUT
-    -------------------------------------------*/
-
+    /* DESKTOP LAYOUT */
     .wrapper {
       position: relative;
       width: 100%;
@@ -114,23 +97,22 @@
       display: block;
     }
   </style>
-
 </head>
 
 <body>
 
-  <!-- AUDIO (starts muted & fades in after click) -->
+  <!-- AUDIO -->
   <audio id="bg-audio" src="Assets/Audio/herlaugh.wav" autoplay loop muted></audio>
 
   <!-- MOBILE BLOCKER -->
-  <div class="mobile-warning">
+  <div class="mobile-warning" id="mobileWarning">
     Please open on Desktop.
     <br>
     <span class="highlight">Thank you.</span>
   </div>
 
   <!-- DESKTOP CONTENT -->
-  <div class="wrapper">
+  <div class="wrapper" id="desktopContent">
 
     <img src="Assets/IMG/herlaugh.jpg" class="main-image">
 
@@ -144,14 +126,14 @@
 
   </div>
 
-  <div class="bottom-bar">
+  <div class="bottom-bar" id="bottomBar">
     <img src="Assets/IMG/Bar.png" class="bottom-logo">
   </div>
 
-  <!-- AUDIO UNMUTE / FADE-IN SCRIPT -->
+  <!-- AUDIO UNMUTE / FADE-IN & MOBILE DETECTION -->
   <script>
+    /* --- AUDIO FADE IN --- */
     const audio = document.getElementById('bg-audio');
-
     audio.volume = 0;
 
     function fadeIn() {
@@ -169,6 +151,25 @@
     }
 
     document.addEventListener('click', enableAudio);
+
+
+    /* --- REAL MOBILE DEVICE DETECTION --- */
+    const isMobile = /iPhone|Android|iPad|iPod|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // show mobile warning
+      document.getElementById('mobileWarning').style.display = "flex";
+
+      // hide desktop content
+      document.getElementById('desktopContent').style.display = "none";
+      document.getElementById('bottomBar').style.display = "none";
+    } 
+    else {
+      // desktop → ensure everything is visible
+      document.getElementById('mobileWarning').style.display = "none";
+      document.getElementById('desktopContent').style.display = "block";
+      document.getElementById('bottomBar').style.display = "block";
+    }
   </script>
 
 </body>
