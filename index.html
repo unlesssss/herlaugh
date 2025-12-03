@@ -19,6 +19,44 @@
       overflow-x: hidden;
     }
 
+    /* ------------------------------------------
+       MOBILE BLOCKER
+    -------------------------------------------*/
+    .mobile-warning {
+      display: none; /* hidden on desktop */
+      position: fixed;
+      inset: 0;
+      background: white;
+      color: black;
+      font-size: 22px;
+      padding: 40px;
+      text-align: center;
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+      font-family: 'NewsGothic', sans-serif;
+    }
+
+    .mobile-warning .highlight {
+      color: #FF0062;
+    }
+
+    /* Show warning + hide website below 900px width */
+    @media (max-width: 900px) {
+      .mobile-warning {
+        display: flex;
+      }
+
+      .wrapper,
+      .bottom-bar {
+        display: none !important;
+      }
+    }
+
+    /* ------------------------------------------
+       DESKTOP LAYOUT
+    -------------------------------------------*/
     .wrapper {
       position: relative;
       width: 100%;
@@ -26,7 +64,6 @@
       overflow: hidden;
     }
 
-    /* MAIN IMAGE BEHIND EVERYTHING */
     .main-image {
       position: absolute;
       top: 50%;
@@ -35,10 +72,9 @@
       width: auto;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      z-index: 1; /* behind the text + pink bar */
+      z-index: 1;
     }
 
-    /* TEXT ABOVE IMAGE BUT BELOW BAR */
     .left-panel {
       position: relative;
       z-index: 2;
@@ -60,13 +96,12 @@
       color: #FF0062;
     }
 
-    /* FULL WIDTH PINK BAR PNG IN FRONT */
     .bottom-bar {
       width: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
-      z-index: 3; /* <-- now on top of the entire page */
+      z-index: 3;
     }
 
     .bottom-logo {
@@ -80,10 +115,16 @@
 
 <body>
 
+  <!-- MOBILE BLOCKER -->
+  <div class="mobile-warning">
+    Please open on Desktop.
+    <br>
+    <span class="highlight">Thank you.</span>
+  </div>
+
+  <!-- DESKTOP CONTENT -->
   <div class="wrapper">
-
     <img src="Assets/IMG/herlaugh.jpg" class="main-image">
-
     <div class="left-panel">
       <p class="upload-text">
         Upload an image of your
@@ -91,7 +132,6 @@
         <br>+
       </p>
     </div>
-
   </div>
 
   <div class="bottom-bar">
