@@ -22,10 +22,11 @@
     .wrapper {
       position: relative;
       width: 100%;
-      height: calc(100vh - 40px);
+      height: 100vh;
       overflow: hidden;
     }
 
+    /* CENTER THE MAIN IMAGE */
     .main-image {
       position: absolute;
       top: 50%;
@@ -45,7 +46,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;   /* vertical centering */
+      justify-content: center;
       padding-left: 40px;
     }
 
@@ -59,19 +60,18 @@
       color: #FF0062;
     }
 
-    /* BOTTOM BAR */
+    /* FULL WIDTH BOTTOM PNG BAR */
     .bottom-bar {
       width: 100%;
-      height: 40px;
-      background: #d84a77;
-      display: flex;
-      align-items: center;
-      padding-left: 20px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
 
     .bottom-logo {
-      height: 40px;
-      width: 100%;
+      width: 100%;  /* stretch full width */
+      height: auto; /* keep correct ratio */
+      display: block;
     }
   </style>
 
@@ -80,15 +80,20 @@
 <body>
 
   <div class="wrapper">
+
     <img src="Assets/IMG/herlaugh.jpg" class="main-image">
+
     <div class="left-panel">
       <p class="upload-text">
-        Upload an image of your <span class="highlight">significant other laughing</span>
+        Upload an image of your
+        <span class="highlight">significant other laughing</span>
         <br>+
       </p>
     </div>
+
   </div>
 
+  <!-- FULL-WIDTH BAR PNG -->
   <div class="bottom-bar">
     <img src="Assets/IMG/Bar.png" class="bottom-logo">
   </div>
