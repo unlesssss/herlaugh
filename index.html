@@ -19,45 +19,42 @@
       overflow-x: hidden;
     }
 
-   /* ------------------------------------------
-   MOBILE BLOCKER
--------------------------------------------*/
-.mobile-warning {
-  display: none; /* hidden on desktop */
-  position: fixed;
-  inset: 0;
-  background: white;
-  color: black;
-  font-size: 22px;
-  padding: 40px;
-  z-index: 9999;
-  font-family: 'NewsGothic', sans-serif;
+    /* ------------------------------------------
+       MOBILE BLOCKER
+    -------------------------------------------*/
+    .mobile-warning {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: white;
+      color: black;
+      font-size: 22px;
+      padding: 40px;
+      z-index: 9999;
+      font-family: 'NewsGothic', sans-serif;
 
-  /* CENTER EVERYTHING PERFECTLY */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  /* vertical */
-  align-items: center;       /* horizontal */
-  text-align: center;
-  line-height: 1.3;
-}
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 1.3;
+    }
 
-.mobile-warning .highlight {
-  color: #FF0062;
-}
+    .mobile-warning .highlight {
+      color: #FF0062;
+    }
 
-/* Show warning + hide website below 900px width */
-@media (max-width: 900px) {
-  .mobile-warning {
-    display: flex;
-  }
+    @media (max-width: 900px) {
+      .mobile-warning {
+        display: flex;
+      }
 
-  .wrapper,
-  .bottom-bar {
-    display: none !important;
-  }
-}
-
+      .wrapper,
+      .bottom-bar {
+        display: none !important;
+      }
+    }
 
     /* ------------------------------------------
        DESKTOP LAYOUT
@@ -120,6 +117,9 @@
 
 <body>
 
+  <!-- AUDIO (starts muted) -->
+  <audio id="bg-audio" src="Assets/Audio/herlaugh.wav" autoplay loop muted></audio>
+
   <!-- MOBILE BLOCKER -->
   <div class="mobile-warning">
     Please open on Desktop.
@@ -139,9 +139,33 @@
     </div>
   </div>
 
+  <!-- FULL-WIDTH PNG BAR -->
   <div class="bottom-bar">
     <img src="Assets/IMG/Bar.png" class="bottom-logo">
   </div>
+
+  <!-- AUDIO UNMUTE / FADE-IN -->
+  <script>
+    const audio = document.getElementById('bg-audio');
+
+    audio.volume = 0;
+
+    function fadeIn() {
+      if (audio.volume < 1) {
+        audio.volume = Math.min(audio.volume + 0.02, 1);
+        requestAnimationFrame(fadeIn);
+      }
+    }
+
+    function enableAudio() {
+      audio.muted = false;
+      audio.play();
+      fadeIn();
+      document.removeEventListener('click', enableAudio);
+    }
+
+    document.addEventListener('click', enableAudio);
+  </script>
 
 </body>
 </html>
