@@ -1,8 +1,98 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>herlaugh</title>
+
+  <style>
+    /* ---------------------------
+       FONT
+    --------------------------- */
+    @font-face {
+      font-family: 'NewsGothic';
+      src: url('assets/fonts/NewsGothicStd.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ---------------------------
+       GLOBAL
+    --------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: 'NewsGothic', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ---------------------------
+       LAYOUT
+    --------------------------- */
+    .wrapper {
+      display: flex;
+      width: 100%;
+      height: calc(100vh - 40px); /* minus bottom bar */
+    }
+
+    .left-panel {
+      width: 40%;
+      padding-left: 40px;
+      padding-top: 180px;
+    }
+
+    .upload-text {
+      font-size: 26px;
+      line-height: 1.25;
+      color: #000;
+    }
+
+    .highlight {
+      color: #d84a77;
+    }
+
+    .main-image {
+      width: 60%;
+      object-fit: cover;
+      height: 100%;
+    }
+
+    /* ---------------------------
+       BOTTOM BAR
+    --------------------------- */
+    .bottom-bar {
+      width: 100%;
+      height: 40px;
+      background: #d84a77;
+      display: flex;
+      align-items: center;
+    }
+
+    .bottom-logo {
+      height: 24px;
+      margin-left: 20px;
+    }
+  </style>
+
 </head>
+
 <body>
-  <h1>Hello</h1>
+
+  <div class="wrapper">
+    <div class="left-panel">
+      <p class="upload-text">
+        Upload an image of your <span class="highlight">significant other</span>
+        <br>+
+      </p>
+    </div>
+
+    <img src="assets/img/herlaugh.jpg" class="main-image" alt="herlaugh">
+  </div>
+
+  <div class="bottom-bar">
+    <img src="assets/img/Bar.png" class="bottom-logo" alt="bar logo">
+  </div>
+
 </body>
 </html>
